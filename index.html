@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZiZi</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        window.TWINTYPE_CONFIG = {
+            families: ["LINE_Seed_TW"]
+        };
+    </script>
+    <script src='https://api.twintype.co/embed_v2.js?token=cd783732f2f6219f935f54e61009b7858767b82p'></script>
+
+
+
+    <meta name="twitter:image"
+        content="https://zizi.twintype.co/imgs/icon.png">
+    <meta property="og:image"
+        content="https://zizi.twintype.co/imgs/icon.png">
+
+
+    <meta name="twitter:description"
+        content="ZiZi|全能限動改造王：一款專為限時動態與社群分享打造的文字美感工具，致力於讓每個人都能用最簡單的方式，做出乾淨、有質感的畫面。不需要設計背景、不必學習複雜操作，只要輸入文字，就能完成好看的文字。">
+    <meta property="og:description"
+        content="ZiZi|全能限動改造王：一款專為限時動態與社群分享打造的文字美感工具，致力於讓每個人都能用最簡單的方式，做出乾淨、有質感的畫面。不需要設計背景、不必學習複雜操作，只要輸入文字，就能完成好看的文字。">
+</head>
+
+<body>
+    <div class="introduceBox">
+        <div class="introduceContent">
+            <section class="chapters">
+                <h2>限動不再單調</h2>
+                <div class="imgBox" style="display: grid; position: relative;">
+                    <img id="heroImage" src="./imgs/001.jpg" alt=""
+                        style="grid-area: 1/1; transition: opacity 1s ease-in-out; z-index: 2;">
+                    <img id="heroImageNext" src="./imgs/005.jpg" alt="" style="grid-area: 1/1; z-index: 1; opacity: 1;">
+                </div>
+            </section>
+
+            <section class="chapters">
+                <h2>免費功能不受限</h2>
+
+                <div class="slider-container">
+                    <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slides">
+                        <div id="s1" class="slide">
+                            <img src="./imgs/S003.png" alt="">
+                            <h3>支援多種排版</h3>
+                        </div>
+
+                        <div id="s2" class="slide">
+                            <img src="./imgs/S002.png" alt="">
+                            <h3>輕鬆匯入字體</h3>
+                        </div>
+                        <div id="s3" class="slide">
+                            <img src="./imgs/S001.png" alt="">
+                            <h3>快速保存，靈感不中斷</h3>
+                        </div>
+                        <div id="s4" class="slide">
+                            <img src="./imgs/S004.png" alt="">
+                            <h3>配色排版超自由！</h3>
+                        </div>
+                        <div id="s5" class="slide">
+                            <img src="./imgs/S005.png" alt="">
+                            <h3>支援字體安裝</h3>
+                        </div>
+                    </div>
+                    <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <section class="chapters">
+                <h2>簡潔，好上手！</h2>
+                <div class="imgBox" style="padding-bottom: 10px;">
+                    <img src="./imgs/002.jpg" alt="">
+
+                </div>
+                <a href="https://youtube.com/shorts/C5sEH3vA4ns?si=kygTzPb9PcJPxLPJ" target="_blank"
+                    class="download-btn">使用教學</a>
+
+            </section>
+
+
+            <h2>親自試試看</h2>
+            <div style="display: flex;flex-direction: column;align-items: center;margin-top: 40px;width: 100%;">
+                <div id="textEditorArea">
+                    <p id="displayText">四季遞嬗，日月更迭，唯有筆墨如石堅。</p>
+                </div>
+                <div class="toolBar">
+                    <button id="sizeBtn"><img class="btnIcon" src="./imgs/icons/00.png" alt=""></button>
+                    <button id="colorBtn"><img class="btnIcon" src="./imgs/icons/01.png" alt=""></button>
+                    <button id="strokeBtn"><img class="btnIcon" src="./imgs/icons/02.png" alt=""></button>
+                    <button id="fontBtn"><img class="btnIcon" src="./imgs/icons/03.png" alt=""></button>
+                    <button id="layoutBtn"><img class="btnIcon" id="typographyBtn" src="./imgs/icons/t01.png"
+                            alt=""></button>
+                    <button id="copyBtn"><img class="btnIcon" src="./imgs/icons/05.png" alt=""></button>
+                </div>
+                <div id="panelContainer" class="panel-container">
+                    <div id="fontPanel" class="active-panel" style="display: none;">
+                        <div class="panel-title">字體</div>
+                        <div id="activeFontHeader" class="font-header">
+                            <span id="currentFontName">芫荽</span>
+                            <i class="fas fa-chevron-down" id="fontChevron"></i>
+                        </div>
+                        <div id="fontDropdown" class="font-list-expanded" style="display: none;">
+                            <div class="font-item" data-font="Iansui" style="font-family: 'Iansui';">芫荽</div>
+                            <div class="font-item" data-font="Webfont_Song" style="font-family: 'Webfont_Song';">燈石宋
+                            </div>
+                            <div class="font-item" data-font="IBMPlexBold" style="font-family: 'IBMPlexBold';">IBM Plex
+                                黑體-Bold</div>
+                            <div class="font-item" data-font="IBMPlexMedium" style="font-family: 'IBMPlexMedium';">IBM
+                                Plex 黑體-Medium</div>
+                            <div class="font-item" data-font="IBMPlexLight" style="font-family: 'IBMPlexLight';">IBM
+                                Plex 黑體-Light</div>
+                            <div class="font-item" data-font="ChenYuluoyan" style="font-family: 'ChenYuluoyan';">辰宇落雁體
+                            </div>
+                            <div class="font-item" data-font="AllSeto" style="font-family: 'AllSeto';">cjkFonts 全瀨體
+                            </div>
+                            <div class="font-item" data-font="GenRyuMin" style="font-family: 'GenRyuMin';">源流明體</div>
+                            <div class="font-item" data-font="OpenHuninn" style="font-family: 'OpenHuninn';">jf-open 粉圓
+                            </div>
+                            <div class="font-item" data-font="KingHwa" style="font-family: 'KingHwa';">京華老宋體</div>
+                            <div class="font-item" data-font="oh" style="font-family: 'oh';">和瑄手書</div>
+
+                        </div>
+                    </div>
+                    <div id="colorPanel" class="active-panel" style="display: none;">
+                        <div class="panel-title">文字顏色</div>
+                        <div class="color-row">
+                            <div class="color-swatch active" style="background: #5d4037;" data-color="#5d4037"></div>
+                            <div class="color-swatch" style="background: #ffffff;" data-color="#ffffff"></div>
+                            <div class="color-swatch" style="background: #010101;" data-color="#010101"></div>
+                            <div class="color-swatch" style="background: #ffdd9d;" data-color="#ffdd9d"></div>
+                            <div class="color-swatch" style="background: #667e08;" data-color="#667e08"></div>
+                            <div class="color-swatch custom">+</div>
+                        </div>
+                    </div>
+                    <div id="sizePanel" class="active-panel" style="display: none;">
+                        <div class="panel-title">屬性調節</div>
+                        <div class="slider-group" id="sizeRow">
+                            <div class="slider-label-row">
+                                <label>尺寸</label>
+                                <span class="value" id="fontSizeValue">20</span>
+                            </div>
+                            <input type="range" class="range-slider" id="fontSizeSlider" min="8" max="60" value="20">
+                        </div>
+                        <div id="standardSizeControls">
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <label>間距</label>
+                                    <span class="value" id="letterSpacingValue">0.0</span>
+                                </div>
+                                <input type="range" class="range-slider" id="letterSpacingSlider" min="-5" max="20"
+                                    step="0.5" value="0">
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <label id="lineHeightLabel">行高</label>
+                                    <span class="value" id="lineHeightValue">1.3</span>
+                                </div>
+                                <input type="range" class="range-slider" id="lineHeightSlider" min="0.8" max="3.0"
+                                    step="0.1" value="1.3">
+                            </div>
+                        </div>
+                        <div id="circularControls" style="display: none;">
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <label>半徑</label>
+                                    <span class="value" id="radiusValue">100</span>
+                                </div>
+                                <input type="range" class="range-slider" id="radiusSlider" min="50" max="300"
+                                    value="100">
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <label>字距</label>
+                                    <span class="value" id="circularSpacingValue">15</span>
+                                </div>
+                                <input type="range" class="range-slider" id="circularSpacingSlider" min="0" max="100"
+                                    value="15">
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <label>角度</label>
+                                    <span class="value" id="angleValue">0</span>
+                                </div>
+                                <input type="range" class="range-slider" id="angleSlider" min="0" max="360" value="0">
+                            </div>
+                            <!-- <div class="slider-group">
+                                <div class="slider-label-row">
+                                    <label>方向</label>
+                                    <div class="toggle-group" style="display: flex; gap: 10px;">
+                                        <button class="toggle-btn active" id="cwBtn">順時針</button>
+                                        <button class="toggle-btn" id="ccwBtn">逆時針</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div id="strokePanel" class="active-panel" style="display: none;">
+                        <div class="panel-tabs">
+                            <div class="tab-item active" data-tab="box">文字框描邊</div>
+                            <div class="tab-item" data-tab="path">文字路徑描邊</div>
+                        </div>
+                        <div class="color-row" id="strokeColorRow">
+                            <div class="color-swatch none" data-color="transparent"></div>
+                            <div class="color-swatch" style="background: #fff7ef;" data-color="#fff7ef"></div>
+                            <div class="color-swatch" style="background: #A3C9E2;" data-color="#A3C9E2"></div>
+                            <div class="color-swatch" style="background: #813f08;" data-color="#813f08"></div>
+                            <div class="color-swatch active" style="background: #fcffcc;" data-color="#fcffcc"></div>
+                            <div class="color-swatch custom">+</div>
+                        </div>
+                        <div class="slider-group">
+                            <div class="slider-label-row">
+                                <label>粗細</label>
+                                <span class="value" id="strokeWidthValue">2.5 px</span>
+                            </div>
+                            <input type="range" class="range-slider" id="strokeWidthSlider" min="0" max="20" step="0.5"
+                                value="2.5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="chapters">
+                <h2 style="width: 100%;">常見問題</h2>
+                <dl class="faq-list">
+                    <dt>我自己載入的字體會被上傳嗎？</dt>
+                    <dd>不會，您自行載入的字體只會保存於您的裝置中。</dd>
+
+                    <dt>為甚麼有些字體會慢一點載入？</dt>
+                    <dd>雲端字體是存在伺服器上的，當你選用時，它僅會回傳你輸入的文字所包含之字元，這樣可以節省您手機的容量！因為是從遠端傳送，所以會有 300 毫秒左有的時差。_。</dd>
+
+                    <dt>這APP會要求那些權限</dt>
+                    <dd>一般其況下，只會要求網路與剪貼簿功能，這是為了調用遠端字體與複製圖片。以及在您手動載入字體時會讀取字體文件，但不會上傳，且您可以隨時刪除！</dd>
+                </dl>
+
+            </section>
+        </div>
+    </div>
+    <div class="mainBox">
+        <div class="top-icon">
+            <img src="./imgs/icon.png" alt="LOGO">
+        </div>
+
+        <div class="center-content">
+            <h1 class="titleH1">ZiZi 全能限動改造王</h1>
+            <a href="#" class="download-btn" data-modal="gotodownload.html">立即下載</a>
+        </div>
+
+        <footer class="footer-links">
+            <a href="https://privacy-policy.twintype.co/zh-TW/v1.0.0/01-zizi.html" target="_blank">隱私政策</a>
+            <a href="#" data-modal="preload-fonts.html">預載字體</a>
+            <a href="#" data-modal="about.html">關於我們</a>
+            <a href="#" data-modal="support.html">技術支援</a>
+        </footer>
+    </div>
+
+    <div id="pageModalOverlay" class="page-modal-overlay">
+        <div class="page-modal">
+            <div id="pageModalBody" class="page-modal-body">
+            </div>
+            <div class="page-modal-actions">
+                <button id="pageModalClose" class="page-modal-close-button">關閉</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+    <span
+        style="font-size: 0.1px;visibility: hidden;">stylefon-abcir{mxwdh:10%;g5vu}p,48OHk#62()73@'/B_9CTFGRMIPSELJjKNWzZX預載字體說明="q!隱藏其他欄位顯示效果族英文名稱調用方法重語系出處作者授權連結地面控制中心，呼叫少校。黑D朱雀仿宋+璇璣造星光手寫白河可商辰宇落雁韋、立一致A言型繪／劉岑群網站內海改清松游青京華老活攷古規矩饅頭Y官源流粉圓霞鶩楷U[]?|全能限動王：款專為時態與社分享打的美感工具力於讓每個人都最簡單式做乾淨有質畫不需要設計背景必學習複雜操只輸入就完成好看再免費功受支援多種排版輕鬆匯快速保存靈斷配色超自由！安裝潔上使教親試四季遞嬗日月更迭唯筆墨如石堅芫荽燈瀨和瑄書顏屬性節尺寸V間距行高半徑角度向順針逆框描邊路粗細常見問題我己會被傳嗎？您置甚麼些慢點雲端是在伺服器當你選它僅回所包含之元這樣以省機容量因從遠送毫秒左差求那般況下剪貼簿了製圖片及讀取件但且隨刪除即私政策關們技術閉團隊品過程遇到或發現異歡迎透聯絡加同討論該應任何信箱請盡附號業統本提供截步驟幫助找原十謝若建議合想也非來查章去驗整卓前往店*小熊Q</span>
+</body>
+
+</html>

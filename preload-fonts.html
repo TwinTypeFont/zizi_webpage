@@ -1,0 +1,581 @@
+<style>
+    .font-table-container {
+        max-width: 100%;
+        max-height: 50vh;
+        overflow: auto;
+    }
+
+    table.font-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .font-table th,
+    .font-table td {
+        padding: 4px 8px;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .showOrHidden {
+        display: inline-block;
+        background-color: white;
+        color: #6d4c41;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: normal;
+        transition: transform 0.2s, background-color 0.2s;
+        border: none;
+        padding: 5px;
+    }
+
+    .showOrHidden:hover {
+        background-color: #6d4c41;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: normal;
+        transition: transform 0.2s, background-color 0.2s;
+        border: none;
+    }
+
+    .font-table.hide-extra-cols th:nth-child(2),
+    .font-table.hide-extra-cols td:nth-child(2),
+    .font-table.hide-extra-cols th:nth-child(4),
+    .font-table.hide-extra-cols td:nth-child(4),
+    .font-table.hide-extra-cols th:nth-child(7),
+    .font-table.hide-extra-cols td:nth-child(7) {
+        display: none;
+    }
+
+    .font-table.show-extra-cols th:nth-child(3),
+    .font-table.show-extra-cols td:nth-child(3),
+    .font-table.show-extra-cols th:nth-child(4),
+    .font-table.show-extra-cols td:nth-child(4),
+    .font-table.show-extra-cols th:nth-child(7),
+    .font-table.show-extra-cols td:nth-child(7) {
+        display: table-cell;
+    }
+
+    @font-face {
+        font-family: '0000';
+        src: url('./ds/BB_9_B_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0001';
+        src: url('./ds/Chenyuluoyan-Thin_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0002';
+        src: url('./ds/FancyFreeFont_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0003';
+        src: url('./ds/GenRyuMinB_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0004';
+        src: url('./ds/IBMPlexSansTC-Bold_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0005';
+        src: url('./ds/IBMPlexSansTC-ExtraLight_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0006';
+        src: url('./ds/IBMPlexSansTC-Light_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0007';
+        src: url('./ds/IBMPlexSansTC-Medium_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0008';
+        src: url('./ds/IBMPlexSansTC-Regular_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0009';
+        src: url('./ds/IBMPlexSansTC-SemiBold_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0010';
+        src: url('./ds/IBMPlexSansTC-Text_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0011';
+        src: url('./ds/IBMPlexSansTC-Thin_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0012';
+        src: url('./ds/JasonHandwriting1_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0013';
+        src: url('./ds/jf-openhuninn_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0014';
+        src: url('./ds/KingHwaOldSongRegular_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0015';
+        src: url('./ds/LINESeedTWB_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0016';
+        src: url('./ds/LINESeedTWEB_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0017';
+        src: url('./ds/LINESeedTWR_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0018';
+        src: url('./ds/LINESeedTWTTFT_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0019';
+        src: url('./ds/MantouSansRegular_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0020';
+        src: url('./ds/NaikaiFontRegular_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0021';
+        src: url('./ds/ProperScriptRegular_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0022';
+        src: url('./ds/ShantellSans-Medium_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0023';
+        src: url('./ds/StarPandaKidsBeta2.0-Regular_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0024';
+        src: url('./ds/zf_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0025';
+        src: url('./ds/ZhiyiSerif_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: '0026';
+        src: url('./ds/LXGWWenKaiTCRegular_subset.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+</style>
+
+<h2>預載字體說明</h2>
+<button type="button"
+    onclick="(function(btn){var t=document.querySelector('.font-table');if(!t)return;var hidden=t.classList.contains('hide-extra-cols');if(hidden){t.classList.remove('hide-extra-cols');t.classList.add('show-extra-cols');btn.textContent='隱藏其他欄位';}else{t.classList.add('hide-extra-cols');t.classList.remove('show-extra-cols');btn.textContent='顯示其他欄位';}})(this);"
+    class="showOrHidden">顯示其他欄位</button>
+<div class="font-table-container">
+    <table class="font-table hide-extra-cols">
+        <thead>
+            <tr>
+                <th>顯示效果</th>
+                <th>字族 / 英文名稱</th>
+                <th>調用名稱</th>
+                <th>調用方法</th>
+                <th>字重</th>
+                <th>風格種類</th>
+
+                <th>語系</th>
+                <th>出處/作者</th>
+                <th>授權</th>
+                <th>連結</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-family: '0007';">地面控制中心，呼叫 Tom 少校。</td>
+                <td>IBM Plex Sans</td>
+                <td>IBM Plex 黑體-Regular</td>
+                <td>Dynamic Loading</td>
+                <td>Regular</td>
+                <td>黑體</td>
+                <td>TC</td>
+                <td>IBM</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/IBM/plex/" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0006';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>IBM Plex Sans</td>
+                <td>IBM Plex 黑體-Light</td>
+                <td>Dynamic Loading</td>
+
+                <td>Light</td>
+                <td>黑體</td>
+
+                <td>TC</td>
+                <td>IBM</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/IBM/plex/" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0004';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>IBM Plex Sans</td>
+                <td>IBM Plex 黑體-Bold</td>
+                <td>Dynamic Loading</td>
+
+                <td>Bold</td>
+                <td>黑體</td>
+
+                <td>TC</td>
+                <td>IBM</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/IBM/plex/" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0024';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>Zhuque Fangsong</td>
+                <td>朱雀仿宋</td>
+                <td>Dynamic Loading</td>
+
+                <td>Regular</td>
+                <td>仿宋</td>
+
+                <td>TC+SC</td>
+                <td>璇璣造字</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/TrionesType/zhuque" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0023';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>StarPandaKidsFonts</td>
+                <td>星光手寫體</td>
+                <td>Dynamic Loading</td>
+
+                <td>Regular</td>
+                <td>手寫</td>
+
+                <td>TC</td>
+                <td>白河</td>
+                <td>可商用</td>
+                <td><a href="https://github.com/cyberinkflow/StarPandaKidsFonts" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0001';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>Chenyuluoyan</td>
+                <td>辰宇落雁體</td>
+                <td>Dynamic Loading</td>
+
+                <td>Thin</td>
+                <td>手寫</td>
+
+                <td>TC</td>
+                <td>韋辰、立宇</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/Chenyu-otf/chenyuluoyan_thin" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0025';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>ZhiyiSerif</td>
+                <td>一致宋體</td>
+                <td>Dynamic Loading</td>
+
+                <td>Regular</td>
+                <td>明體、宋體</td>
+
+                <td>TC</td>
+                <td>RiyipuSipino</td>
+                <td>IPA</td>
+                <td><a href="https://github.com/RiyipuSipino/ZhiyiSerif" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0002';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>FancyFreeFont</td>
+                <td>字言字型-手繪體</td>
+                <td>Dynamic Loading</td>
+
+                <td>Regular</td>
+                <td>明體、宋體、手繪</td>
+
+                <td>TC</td>
+                <td>字言字型／劉岑群</td>
+                <td>可商用</td>
+                <td><a href="https://cjkfonts.io/blog/FancyFreeFont1" target="_blank">網站</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0020';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>NaikaiFont</td>
+                <td>內海字體</td>
+                <td>Dynamic Loading</td>
+
+                <td>Regular</td>
+                <td>手寫</td>
+
+                <td>TC</td>
+                <td>Max改作</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/max32002/naikaifont" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0012';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>JasonHandwriting1</td>
+                <td>清松手寫體1</td>
+                <td>Dynamic Loading</td>
+
+                <td>Regular</td>
+                <td>手寫</td>
+                <td>TC</td>
+                <td>游青松</td>
+                <td>SIL OFL</td>
+                <td><a href="https://jasonfonts.max-everyday.com/about/" target="_blank">網站</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0014';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>KingHwaOldSong</td>
+                <td>京華老宋體</td>
+                <td>Dynamic Loading</td>
+                <td>Regular</td>
+                <td>明體、宋體</td>
+                <td>TC</td>
+                <td>活字攷古</td>
+                <td>SIL OFL</td>
+                <td><a href="https://zhuanlan.zhihu.com/p/637491623" target="_blank">說明</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0021';">地面控制中心，呼叫 Tom 少校。</td>
+                <td>ProperScript</td>
+                <td>中規中矩體</td>
+                <td>Dynamic Loading</td>
+                <td></td>
+                <td>手寫</td>
+
+                <td>TC</td>
+                <td>Pei</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/peihe07/ProperScript" target="_blank">說明</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0019';">地面控制中心，呼叫 Tom 少校。</td>
+                <td>Mantou Sans</td>
+                <td>饅頭黑體</td>
+                <td>Dynamic Loading</td>
+                <td></td>
+                <td>黑體、標題字</td>
+                <td>TC</td>
+                <td>Mant0u</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/mant0u0/MantouSans" target="_blank">GitHub</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0017';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>LINE Seed</td>
+                <td>LINE Seed Regular</td>
+                <td>Dynamic Loading</td>
+
+                <td>Regular</td>
+                <td>黑體</td>
+                <td>TC</td>
+                <td>LY Corp.</td>
+                <td>SIL OFL</td>
+                <td><a href="https://seed.line.me/index_tw.html" target="_blank">官網</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0015';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>LINE Seed</td>
+                <td>LINE Seed Bold</td>
+                <td>Dynamic Loading</td>
+
+                <td>Bold</td>
+                <td>黑體</td>
+
+                <td>TC</td>
+                <td>LY Corp.</td>
+                <td>SIL OFL</td>
+                <td><a href="https://seed.line.me/index_tw.html" target="_blank">官網</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0018';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>LINE Seed</td>
+                <td>LINE Seed Thin</td>
+                <td>Dynamic Loading</td>
+
+                <td>Thin</td>
+                <td>黑體</td>
+
+                <td>TC</td>
+                <td>LY Corp.</td>
+                <td>SIL OFL</td>
+                <td><a href="https://seed.line.me/index_tw.html" target="_blank">官網</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0016';">地面控制中心，呼叫 Tom 少校。</td>
+
+                <td>LINE Seed</td>
+                <td>LINE Seed Ex-bold</td>
+                <td>Dynamic Loading</td>
+
+                <td>Ex-bold</td>
+                <td>黑體</td>
+
+                <td>TC</td>
+                <td>LY Corp.</td>
+                <td>SIL OFL</td>
+                <td><a href="https://seed.line.me/index_tw.html" target="_blank">官網</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0003';">地面控制中心，呼叫 Tom 少校。</td>
+                <td>GenRyuMin</td>
+                <td>源流明體</td>
+                <td>Dynamic Loading</td>
+                <td></td>
+                <td>明體、宋體</td>
+                <td>TC</td>
+                <td>butTW</td>
+                <td>SIL OFL</td>
+                <td><a href="https://github.com/ButTaiwan/genryu-font" target="_blank">Github</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0013';">地面控制中心，呼叫 Tom 少校。</td>
+                <td>huninn</td>
+                <td>粉圓體</td>
+                <td>Bundled</td>
+                <td></td>
+                <td>圓體</td>
+                <td>TC</td>
+                <td>justfont</td>
+                <td>SIL OFL</td>
+                <td><a href="https://fonts.google.com/specimen/Huninn" target="_blank">Google Fonts</a></td>
+            </tr>
+            <tr>
+                <td style="font-family: '0026';">地面控制中心，呼叫 Tom 少校。</td>
+                <td>LXGW WenKai TC</td>
+                <td>霞鶩文楷</td>
+                <td>Bundled</td>
+                <td></td>
+                <td>楷體</td>
+
+                <td>TC</td>
+                <td>LXGW</td>
+                <td>SIL OFL</td>
+                <td><a href="https://fonts.google.com/specimen/LXGW+WenKai+TC" target="_blank">Google Fonts</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
