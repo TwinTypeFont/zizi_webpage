@@ -29,6 +29,9 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          # 若尚未啟用 GitHub Pages，這行會自動建立對應的 Pages 設定
+          enablement: true
 
       - name: Upload static files
         uses: actions/upload-pages-artifact@v3
