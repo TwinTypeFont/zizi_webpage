@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TK3M6KQAW7.co.twintype.ziziApp",
+        "paths": [
+          "/mobile/callback",
+          "/mobile/callback/*"
+        ]
+      }
+    ]
+  }
+}

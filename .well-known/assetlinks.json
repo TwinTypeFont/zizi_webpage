@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "co.twintype.ziziapp",
+      "sha256_cert_fingerprints": [
+        "2E:CA:EB:40:68:09:51:A6:CE:A7:FC:5C:43:2C:9C:B9:46:E0:67:0A:1B:CB:21:55:20:CE:F7:B0:CD:1C:EF:50"
+      ]
+    }
+  }
+]
