@@ -30,16 +30,55 @@
     }
 
     p {
-      margin: 0;
+      margin: 0 0 18px;
       line-height: 1.6;
       color: #6c6060;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: #3b2f2f;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
   <main>
     <h1>正在返回 ZiZi App</h1>
-    <p>如果沒有自動跳回 App，請確認你已安裝最新版 ZiZi，然後回到 App 重新嘗試登入。</p>
+    <p id="message">如果沒有自動跳回 App，請點下方按鈕返回，或確認你已安裝最新版 ZiZi。</p>
+    <a id="open-app" href="com.twintype.zizi:/callback">返回 ZiZi App</a>
   </main>
+  <script>
+    (function () {
+      var callbackBase = 'com.twintype.zizi:/callback';
+      var target = callbackBase + window.location.search + window.location.hash;
+      var button = document.getElementById('open-app');
+      var message = document.getElementById('message');
+
+      if (button) {
+        button.href = target;
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      var authError = params.get('error');
+      var errorDescription = params.get('error_description');
+
+      if (authError) {
+        if (message) {
+          message.textContent = '登入失敗：' + authError + (errorDescription ? ' (' + errorDescription + ')' : '') + '。請返回 App 後再試一次。';
+        }
+        return;
+      }
+
+      window.location.replace(target);
+    })();
+  </script>
 </body>
 </html>
