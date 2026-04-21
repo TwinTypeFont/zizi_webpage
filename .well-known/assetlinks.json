@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "co.twintype.ziziapp",
       "sha256_cert_fingerprints": [
-        "2E:CA:EB:40:68:09:51:A6:CE:A7:FC:5C:43:2C:9C:B9:46:E0:67:0A:1B:CB:21:55:20:CE:F7:B0:CD:1C:EF:50"
+        "2E:CA:EB:40:68:09:51:A6:CE:A7:FC:5C:43:2C:9C:B9:46:E0:67:0A:1B:CB:21:55:20:CE:F7:B0:CD:1C:EF:50",
+        "2B:C2:30:25:8E:F8:93:45:F3:F9:2C:22:8E:1D:2D:CD:3D:D0:48:02:44:67:FF:3A:3E:99:F9:93:30:B8:62:A0"
       ]
     }
   }
