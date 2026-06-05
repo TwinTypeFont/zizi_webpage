@@ -20,26 +20,43 @@
         content="ZiZi|全能限動改造王：一款專為限時動態與社群分享打造的文字美感工具，致力於讓每個人都能用最簡單的方式，做出乾淨、有質感的畫面。不需要設計背景、不必學習複雜操作，只要輸入文字，就能完成好看的文字。">
     <meta property="og:description"
         content="ZiZi|全能限動改造王：一款專為限時動態與社群分享打造的文字美感工具，致力於讓每個人都能用最簡單的方式，做出乾淨、有質感的畫面。不需要設計背景、不必學習複雜操作，只要輸入文字，就能完成好看的文字。">
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTKYRSMF92"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YTKYRSMF92"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-YTKYRSMF92');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-  
-</script>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "vsvkkoad52");
-</script>
+        gtag('config', 'G-YTKYRSMF92');
+    </script>
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () {
+                (c[a].q = c[a].q || []).push(arguments)
+            };
+            t = l.createElement(r);
+            t.async = 1;
+            t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "vsvkkoad52");
+    </script>
 </head>
+
 <body>
+    <style>
+        body {
+            text-align: justify;
+        }
+
+        dd {
+            text-align: justify;
+
+        }
+    </style>
     <div class="introduceBox">
         <div class="introduceContent">
             <section class="chapters">
@@ -50,7 +67,6 @@
                     <img id="heroImageNext" src="./imgs/005.jpg" alt="" style="grid-area: 1/1; z-index: 1; opacity: 1;">
                 </div>
             </section>
-
             <section class="chapters">
                 <h2>免費功能不受限</h2>
 
@@ -89,18 +105,33 @@
                     <img src="./imgs/002.jpg" alt="">
 
                 </div>
-                <a href="https://youtube.com/shorts/C5sEH3vA4ns?si=kygTzPb9PcJPxLPJ" target="_blank"
-                    class="download-btn">使用教學</a>
+                <a href="https://l.twinty.pe/FG36_0" target="_blank" class="download-btn">使用教學</a>
 
             </section>
 
+            <section class="chapters">
+                <h2>好字體，輕鬆擁有</h2>
+                <div class="imgBox" id="about-fonts" style="padding-bottom: 10px; display: grid; position: relative;">
+                    <img id="aboutFontsImage" src="./imgs/A01.jpg" alt=""
+                        style="grid-area: 1/1; transition: opacity 1s ease-in-out; z-index: 2;">
+                    <img id="aboutFontsImageNext" src="./imgs/A02.jpg" alt=""
+                        style="grid-area: 1/1; z-index: 1; opacity: 1;">
 
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" data-modal="preload-fonts.html" class="download-btn">免費字體</a>
+                    <a href="https://twintype.cloud" target="_blank" rel="noopener noreferrer"
+                        class="download-btn">訂閱字體</a>
+                </div>
+
+            </section>
             <h2>親自試試看</h2>
             <div style="display: flex;flex-direction: column;align-items: center;margin-top: 40px;width: 100%;">
                 <div id="textEditorArea">
                     <p id="displayText">四季遞嬗，日月更迭，唯有筆墨如石堅</p>
                 </div>
-                <div class="toolBar">
+                <div style="max-width: 100%;width:100%;display: flex;padding: 0;">
+                                    <div class="toolBar">
                     <button id="sizeBtn"><img class="btnIcon" src="./imgs/icons/00.png" alt=""></button>
                     <button id="colorBtn"><img class="btnIcon" src="./imgs/icons/01.png" alt=""></button>
                     <button id="strokeBtn"><img class="btnIcon" src="./imgs/icons/02.png" alt=""></button>
@@ -108,6 +139,7 @@
                     <button id="layoutBtn"><img class="btnIcon" id="typographyBtn" src="./imgs/icons/t01.png"
                             alt=""></button>
                     <button id="copyBtn"><img class="btnIcon" src="./imgs/icons/05.png" alt=""></button>
+                </div>
                 </div>
                 <div id="panelContainer" class="panel-container">
                     <div id="fontPanel" class="active-panel" style="display: none;">
@@ -135,19 +167,17 @@
                             </div>
                             <div class="font-item" data-font="KingHwa" style="font-family: 'KingHwa';">京華老宋體</div>
                             <div class="font-item" data-font="oh" style="font-family: 'oh';">和瑄手書</div>
-                            <div style="min-height: 30px;">
-                                更多字體請看
-                            </div>
+                            <a href="#" data-modal="gotodownload.html" style="min-height: 30px; display: block;text-align: center;font-size: 14px;">更多字體</a>
                         </div>
                     </div>
                     <div id="colorPanel" class="active-panel" style="display: none;">
                         <div class="panel-title">文字顏色</div>
                         <div class="color-row">
-                            <div class="color-swatch active" style="background: #5d4037;" data-color="#5d4037"></div>
-                            <div class="color-swatch" style="background: #ffffff;" data-color="#ffffff"></div>
-                            <div class="color-swatch" style="background: #010101;" data-color="#010101"></div>
-                            <div class="color-swatch" style="background: #ffdd9d;" data-color="#ffdd9d"></div>
-                            <div class="color-swatch" style="background: #667e08;" data-color="#667e08"></div>
+                            <div class="color-swatch active" style="background: #2F241E;" data-color="#2F241E"></div>
+                            <div class="color-swatch" style="background: #F3E9D2;" data-color="#F3E9D2"></div>
+                            <div class="color-swatch" style="background: #3F5C3A;" data-color="#3F5C3A"></div>
+                            <div class="color-swatch" style="background: #7A2E2E;" data-color="#7A2E2E"></div>
+                            <div class="color-swatch" style="background: #FFFFFF;" data-color="#FFFFFF"></div>
                             <div class="color-swatch custom">+</div>
                         </div>
                     </div>
@@ -158,7 +188,7 @@
                                 <label>尺寸</label>
                                 <span class="value" id="fontSizeValue">20</span>
                             </div>
-                            <input type="range" class="range-slider" id="fontSizeSlider" min="8" max="60" value="20">
+                            <input type="range" class="range-slider" id="fontSizeSlider" min="8" max="30" value="10">
                         </div>
                         <div id="standardSizeControls">
                             <div class="slider-group">
@@ -166,7 +196,7 @@
                                     <label>間距</label>
                                     <span class="value" id="letterSpacingValue">0.0</span>
                                 </div>
-                                <input type="range" class="range-slider" id="letterSpacingSlider" min="-5" max="20"
+                                <input type="range" class="range-slider" id="letterSpacingSlider" min="-5" max="10"
                                     step="0.5" value="0">
                             </div>
                             <div class="slider-group">
@@ -202,28 +232,20 @@
                                 </div>
                                 <input type="range" class="range-slider" id="angleSlider" min="0" max="360" value="0">
                             </div>
-                            <!-- <div class="slider-group">
-                                <div class="slider-label-row">
-                                    <label>方向</label>
-                                    <div class="toggle-group" style="display: flex; gap: 10px;">
-                                        <button class="toggle-btn active" id="cwBtn">順時針</button>
-                                        <button class="toggle-btn" id="ccwBtn">逆時針</button>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                     <div id="strokePanel" class="active-panel" style="display: none;">
                         <div class="panel-tabs">
-                            <div class="tab-item active" data-tab="box">文字框描邊</div>
-                            <div class="tab-item" data-tab="path">文字路徑描邊</div>
+                            <div class="tab-item active" data-tab="box">背景</div>
+                            <div class="tab-item" data-tab="path">描邊</div>
+                            <div class="tab-item" data-tab="sign">告示牌</div>
                         </div>
                         <div class="color-row" id="strokeColorRow">
                             <div class="color-swatch none" data-color="transparent"></div>
-                            <div class="color-swatch" style="background: #fff7ef;" data-color="#fff7ef"></div>
-                            <div class="color-swatch" style="background: #A3C9E2;" data-color="#A3C9E2"></div>
-                            <div class="color-swatch" style="background: #813f08;" data-color="#813f08"></div>
-                            <div class="color-swatch active" style="background: #fcffcc;" data-color="#fcffcc"></div>
+                            <div class="color-swatch" style="background: #F2D6BF;" data-color="#F2D6BF"></div>
+                            <div class="color-swatch" style="background: #A9C4E5;" data-color="#A9C4E5"></div>
+                            <div class="color-swatch" style="background: #F1E6A4;" data-color="#F1E6A4"></div>
+                            <div class="color-swatch active" style="background: #C8DDB2;" data-color="#C8DDB2"></div>
                             <div class="color-swatch custom">+</div>
                         </div>
                         <div class="slider-group">
@@ -231,7 +253,7 @@
                                 <label>粗細</label>
                                 <span class="value" id="strokeWidthValue">2.5 px</span>
                             </div>
-                            <input type="range" class="range-slider" id="strokeWidthSlider" min="0" max="20" step="0.5"
+                            <input type="range" class="range-slider" id="strokeWidthSlider" min="0" max="10" step="0.5"
                                 value="2.5">
                         </div>
                     </div>
@@ -249,6 +271,13 @@
 
                     <dt>這APP會要求那些權限</dt>
                     <dd>一般其況下，只會要求網路與剪貼簿功能，這是為了調用遠端字體與複製圖片。以及在您手動載入字體時會讀取字體文件，但不會上傳，且您可以隨時刪除！</dd>
+
+                    <dt>如何訂閱字體</dt>
+                    <dd>請前往 <a href="https://cloud.twintype.co/" target="_blank">TwinType Cloud</a>
+                        網站，挑選喜歡的字體，即可訂閱，您可以單獨訂閱 ZiZi 授權，也可訂閱組合包用於桌面軟體創作！購買前請詳閱說明與授權！</dd>
+
+                    <dt>會有廣告嗎？</dt>
+                    <dd>絕大多數情況下沒有，僅在「Galley」字體管理介面有下方小橫幅廣告。我們完全理解使用體驗，對於用戶的重要性，我們不會放置任何的彈出式廣告。</dd>
                 </dl>
 
             </section>
@@ -264,9 +293,18 @@
             <a href="#" class="download-btn" data-modal="gotodownload.html">立即下載</a>
         </div>
 
-        <footer class="footer-links">
+        <button id="mobileFooterMenuBtn" class="mobile-footer-menu-btn" type="button" aria-label="開啟頁尾選單"
+            aria-expanded="false" aria-controls="mobileFooterLinks">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <footer class="footer-links" id="mobileFooterLinks">
             <a href="https://privacy-policy.twintype.co/zh-TW/v1.0.0/01-zizi.html" target="_blank">隱私政策</a>
             <a href="#" data-modal="preload-fonts.html">預載字體</a>
+            <a href="https://blog.twintype.co/zizi-app-font-tutorial/" target="_blank">使用教學</a>
+            <a href="https://cloud.twintype.co/license4zizi" target="_blank">訂閱授權</a>
             <a href="#" data-modal="about.html">關於我們</a>
             <a href="#" data-modal="support.html">技術支援</a>
         </footer>

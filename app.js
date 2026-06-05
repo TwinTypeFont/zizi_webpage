@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFontSize = 20.0;
     let currentLetterSpacing = 0.0;
     let currentLineHeight = 1.3;
-    let currentColor = "#000000";
+    let currentColor = "#2F241E";
     let circularRadius = 100.0;
     let circularSpacing = 15.0;
     let circularStartAngle = 0.0;
@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let boxStrokeWidth = 2.5;
     let pathStrokeColor = "transparent";
     let pathStrokeWidth = 2.5;
+    let signStrokeColor = "transparent";
+    let signStrokeWidth = 2.5;
 
     let activeTabId = null;
     const panels = {
@@ -58,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cwBtn = document.getElementById('cwBtn');
     const ccwBtn = document.getElementById('ccwBtn');
     const lineHeightLabel = document.getElementById('lineHeightLabel');
+    const strokeValueLabel = document.querySelector('#strokePanel .slider-label-row label');
 
     const fontDropdown = document.getElementById('fontDropdown');
     const activeFontHeader = document.getElementById('activeFontHeader');
@@ -72,11 +75,109 @@ document.addEventListener('DOMContentLoaded', () => {
         './imgs/icons/t06.png'
     ];
 
+    const strokePaletteByTextColor = {
+        '#2f241e': ['#F2D6BF', '#A9C4E5', '#F1E6A4', '#C8DDB2'],
+        '#f3e9d2': ['#5D4037', '#355070', '#4A6A3A', '#7F4F24'],
+        '#3f5c3a': ['#DDE9C8', '#F4D7B5', '#BFD8F2', '#EADCB5'],
+        '#7a2e2e': ['#F8D3CC', '#F9E6BA', '#C6DDF2', '#D7E8C7'],
+        '#ffffff': ['#5D4037', '#34495E', '#6B7F3A', '#8E5A3C']
+    };
+    const defaultStrokePalette = strokePaletteByTextColor['#2f241e'];
+
 
     function initHeaderStyles() {
         if (currentFontName) {
             currentFontName.style.fontFamily = currentFont;
         }
+    }
+
+    function resetStrokeVisualStyles() {
+        displayText.style.backgroundColor = 'transparent';
+        displayText.style.border = 'none';
+        displayText.style.borderRadius = '8px';
+        displayText.style.padding = '2px 8px';
+        displayText.style.display = 'inline';
+        displayText.style.writingMode = 'horizontal-tb';
+        displayText.style.webkitWritingMode = 'horizontal-tb';
+        displayText.style.textOrientation = 'mixed';
+        displayText.style.flexDirection = 'row';
+        displayText.style.alignItems = 'center';
+        displayText.style.justifyContent = 'center';
+        displayText.style.maxWidth = 'none';
+        displayText.style.maxHeight = 'none';
+        displayText.style.width = 'auto';
+        displayText.style.height = 'auto';
+        displayText.style.overflow = 'visible';
+        displayText.style.overflowX = 'visible';
+        displayText.style.overflowY = 'visible';
+        displayText.style.boxDecorationBreak = 'clone';
+        displayText.style.webkitBoxDecorationBreak = 'clone';
+        displayText.style.webkitTextStroke = '0px transparent';
+        displayText.style.paintOrder = 'normal';
+        displayText.style.strokeLinejoin = 'round';
+        displayText.style.strokeLinecap = 'round';
+        displayText.style.textRendering = 'auto';
+    }
+
+    function getActiveStrokeColor() {
+        if (activeStrokeTab === 'box') return boxStrokeColor;
+        if (activeStrokeTab === 'path') return pathStrokeColor;
+        return signStrokeColor;
+    }
+
+    function setActiveStrokeColor(color) {
+        if (activeStrokeTab === 'box') {
+            boxStrokeColor = color;
+        } else if (activeStrokeTab === 'path') {
+            pathStrokeColor = color;
+        } else {
+            signStrokeColor = color;
+        }
+    }
+
+    function syncStrokeSwatchActiveState() {
+        const targetColor = (getActiveStrokeColor() || 'transparent').toLowerCase();
+        const noneSwatch = document.querySelector('#strokeColorRow .color-swatch.none');
+        const swatches = document.querySelectorAll('#strokeColorRow .color-swatch');
+
+        swatches.forEach((s) => s.classList.remove('active'));
+
+        if (targetColor === 'transparent') {
+            if (noneSwatch) noneSwatch.classList.add('active');
+            return;
+        }
+
+        const matched = Array.from(swatches).find((s) => {
+            const c = s.getAttribute('data-color');
+            return c && c.toLowerCase() === targetColor;
+        });
+
+        if (matched) {
+            matched.classList.add('active');
+            return;
+        }
+
+        if (noneSwatch) noneSwatch.classList.add('active');
+    }
+
+    function updateStrokePaletteByTextColor(forceFallback = false) {
+        const key = (currentColor || '').toLowerCase();
+        const palette = strokePaletteByTextColor[key] || defaultStrokePalette;
+        const paletteSwatches = Array.from(document.querySelectorAll('#strokeColorRow .color-swatch:not(.none):not(.custom)'));
+
+        paletteSwatches.forEach((swatch, index) => {
+            const color = palette[index % palette.length];
+            swatch.style.background = color;
+            swatch.setAttribute('data-color', color);
+        });
+
+        const currentStrokeColor = getActiveStrokeColor();
+        const existsInPalette = palette.some((c) => c.toLowerCase() === (currentStrokeColor || '').toLowerCase());
+        if (currentStrokeColor !== 'transparent' && !existsInPalette && forceFallback) {
+            setActiveStrokeColor(palette[0]);
+        }
+
+        syncStrokeSwatchActiveState();
     }
 
     function togglePanel(tabId) {
@@ -115,56 +216,83 @@ document.addEventListener('DOMContentLoaded', () => {
                 textArea.style.textAlign = ['left', 'center', 'right', 'justify'][typeState] || 'center';
             }
         }
-        displayText.style.writingMode = 'horizontal-tb';
-        displayText.style.writingMode = 'horizontal-tb';
-        displayText.style.webkitWritingMode = 'horizontal-tb';
-        displayText.style.textOrientation = 'mixed';
+        resetStrokeVisualStyles();
         displayText.style.lineHeight = currentLineHeight;
         displayText.style.letterSpacing = currentLetterSpacing + "px";
-        displayText.style.padding = "2px 8px";
-        displayText.style.borderRadius = "8px";
         displayText.style.textAlign = "center";
-        displayText.style.height = 'auto';
-        displayText.style.width = 'auto';
-        displayText.style.border = "none";
         displayText.style.color = currentColor;
         displayText.style.fontSize = currentFontSize + "px";
         displayText.style.fontFamily = currentFont;
         displayText.style.fontWeight = "normal";
 
         if (textArea) {
-            const needsDarkBackground = currentColor === "#ffdd9d" || currentColor === "#ffffff";
+            textArea.style.height = '';
+            textArea.style.overflow = '';
+            textArea.style.alignItems = 'center';
+        }
+
+        if (textArea) {
+            const normalizedColor = (currentColor || '').toLowerCase();
+            const needsDarkBackground = normalizedColor === "#ffffff";
             if (needsDarkBackground) {
                 textArea.classList.add('dark-editor');
             } else {
                 textArea.classList.remove('dark-editor');
             }
         }
-        if (boxStrokeColor === 'transparent') {
-            displayText.style.backgroundColor = "transparent";
-            displayText.style.border = "none";
-        } else {
-            displayText.style.backgroundColor = boxStrokeColor;
-            displayText.style.border = `${boxStrokeWidth}px solid ${boxStrokeColor}`;
+        if (activeStrokeTab === 'box') {
+            if (boxStrokeColor !== 'transparent') {
+                displayText.style.backgroundColor = boxStrokeColor;
+                displayText.style.border = `${boxStrokeWidth}px solid ${boxStrokeColor}`;
+            }
+        } else if (activeStrokeTab === 'sign') {
+            displayText.style.display = 'inline-block';
+            displayText.style.writingMode = 'horizontal-tb';
+            displayText.style.webkitWritingMode = 'horizontal-tb';
+            displayText.style.textOrientation = 'mixed';
+            displayText.style.flexDirection = 'row';
+            displayText.style.alignItems = 'center';
+            displayText.style.justifyContent = 'center';
+            displayText.style.maxWidth = '100%';
+            displayText.style.padding = "8px";
+            displayText.style.borderRadius = `${signStrokeWidth}px`;
+            displayText.style.boxDecorationBreak = 'slice';
+            displayText.style.webkitBoxDecorationBreak = 'slice';
+            if (signStrokeColor === 'transparent') {
+                displayText.style.backgroundColor = "transparent";
+                displayText.style.border = "none";
+            } else {
+                displayText.style.backgroundColor = signStrokeColor;
+                displayText.style.border = "none";
+            }
         }
 
-        if (pathStrokeColor === 'transparent') {
-            displayText.style.webkitTextStroke = "0px transparent";
-        } else {
-            displayText.style.paintOrder = "stroke fill";
-            displayText.style.strokeLinejoin = "round";
-            displayText.style.webkitTextStroke = `${pathStrokeWidth}px ${pathStrokeColor}`;
+        if (activeStrokeTab === 'path') {
+            if (pathStrokeColor === 'transparent') {
+                displayText.style.webkitTextStroke = "0px transparent";
+            } else {
+                displayText.style.paintOrder = "stroke fill";
+                displayText.style.strokeLinejoin = "round";
+                displayText.style.strokeLinecap = "round";
+                displayText.style.textRendering = 'geometricPrecision';
+                displayText.style.webkitTextStroke = `${pathStrokeWidth}px ${pathStrokeColor}`;
+            }
         }
         if (standardSizeControls) standardSizeControls.style.display = typeState === 5 ? 'none' : 'block';
         if (circularControls) circularControls.style.display = typeState === 5 ? 'block' : 'none';
         if (lineHeightLabel) lineHeightLabel.innerText = typeState === 4 ? '行距' : '行高';
         const boxTab = document.querySelector('#strokePanel [data-tab="box"]');
+        const signTab = document.querySelector('#strokePanel [data-tab="sign"]');
         const pathTab = document.querySelector('#strokePanel [data-tab="path"]');
-        if (boxTab) {
+        if (boxTab && signTab) {
             boxTab.style.display = typeState === 5 ? 'none' : 'block';
-            if (typeState === 5 && activeStrokeTab === 'box') {
+            signTab.style.display = typeState === 5 ? 'none' : 'block';
+            if (typeState === 5 && activeStrokeTab !== 'path') {
                 if (pathTab) pathTab.click();
             }
+        }
+        if (strokeValueLabel) {
+            strokeValueLabel.innerText = activeStrokeTab === 'sign' ? '圓角' : '粗細';
         }
         if (typeState === 5) {
             displayText.style.border = "none";
@@ -231,17 +359,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     displayText.style.webkitWritingMode = 'vertical-rl';
                     displayText.style.textOrientation = 'upright';
                     displayText.style.textAlign = 'left';
-                    displayText.style.height = '350px';
+                    displayText.style.height = '100%';
+                    displayText.style.maxHeight = '100%';
                     displayText.style.display = 'flex';
                     displayText.style.flexDirection = 'column';
                     displayText.style.alignItems = 'center';
+                    displayText.style.justifyContent = 'flex-start';
+                    displayText.style.overflowY = 'auto';
+                    displayText.style.overflowX = 'hidden';
                     displayText.style.boxDecorationBreak = 'slice';
                     displayText.style.webkitBoxDecorationBreak = 'slice';
+                    if (textArea) {
+                        textArea.style.height = '300px';
+                        textArea.style.overflow = 'hidden';
+                        textArea.style.alignItems = 'flex-start';
+                    }
                     break;
             }
             if (typeState !== 4) {
-                displayText.style.boxDecorationBreak = 'clone';
-                displayText.style.webkitBoxDecorationBreak = 'clone';
+                if (activeStrokeTab !== 'sign') {
+                    displayText.style.boxDecorationBreak = 'clone';
+                    displayText.style.webkitBoxDecorationBreak = 'clone';
+                }
+                displayText.style.overflowY = 'visible';
+                displayText.style.overflowX = 'visible';
+            } else if (activeStrokeTab === 'sign') {
+                displayText.style.height = 'auto';
+                displayText.style.maxHeight = 'none';
+                displayText.style.overflowY = 'visible';
+                displayText.style.overflowX = 'visible';
             }
         }
         if (typographyBtn) typographyBtn.src = typeIcons[typeState];
@@ -325,6 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('#colorPanel .color-swatch').forEach(s => s.classList.remove('active'));
             sw.classList.add('active');
             currentColor = sw.dataset.color || "#000000";
+            updateStrokePaletteByTextColor(true);
             applyStyles();
         });
     });
@@ -334,16 +481,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('#strokePanel .tab-item').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
             activeStrokeTab = tab.dataset.tab;
+
+            if (activeStrokeTab === 'box') {
+                boxStrokeColor = 'transparent';
+            }
             
-            const currentVal = activeStrokeTab === 'box' ? boxStrokeWidth : pathStrokeWidth;
+            const currentVal = activeStrokeTab === 'box'
+                ? boxStrokeWidth
+                : activeStrokeTab === 'path'
+                    ? pathStrokeWidth
+                    : signStrokeWidth;
             if (strokeWidthSlider) strokeWidthSlider.value = currentVal;
             if (strokeWidthValue) strokeWidthValue.innerText = currentVal + " px";
             
-            const targetColor = activeStrokeTab === 'box' ? boxStrokeColor : pathStrokeColor;
-            document.querySelectorAll('#strokeColorRow .color-swatch').forEach(s => {
-                s.classList.remove('active');
-                if (s.dataset.color === targetColor) s.classList.add('active');
-            });
+            updateStrokePaletteByTextColor(false);
+
+            applyStyles();
         });
     });
 
@@ -359,8 +512,10 @@ document.addEventListener('DOMContentLoaded', () => {
             sw.classList.add('active');
             if (activeStrokeTab === 'box') {
                 boxStrokeColor = sw.dataset.color || "transparent";
-            } else {
+            } else if (activeStrokeTab === 'path') {
                 pathStrokeColor = sw.dataset.color || "transparent";
+            } else {
+                signStrokeColor = sw.dataset.color || "transparent";
             }
             applyStyles();
         });
@@ -372,8 +527,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (strokeWidthValue) strokeWidthValue.innerText = val.toFixed(1) + " px";
             if (activeStrokeTab === 'box') {
                 boxStrokeWidth = val;
-            } else {
+            } else if (activeStrokeTab === 'path') {
                 pathStrokeWidth = val;
+            } else {
+                signStrokeWidth = val;
             }
             applyStyles();
         });
@@ -446,6 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initHeaderStyles();
+    updateStrokePaletteByTextColor(false);
     applyStyles();
 });
 
